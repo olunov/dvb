@@ -1,6 +1,7 @@
 USER_NAME=vagrant
 USER_PASSWORD=vagrant
 WORKING_DIR=/www
+DOCKSAL_DNS_UPSTREAM=8.8.8.8
 
 # Run Linux updates
 sudo apt-get update -y
@@ -39,10 +40,22 @@ sudo service smbd start
 curl -fsSL https://get.docksal.io | sh
 
 # Vagrant user to docker.
-#sudo usermod -a -G docker vagrant
+#sudo usermod -a -G docker vagrant.
 
-# To apply that change and use Docksal
+# To apply that change and use Docksal.
 newgrp docker
+
+# add proxy settings.
+sudo echo 'DOCKSAL_VHOST_PROXY_IP="0.0.0.0"' >> ~/.docksal/docksal.env
+
+# Disable DNS resolver.
+sudo echo 'DOCKSAL_NO_DNS_RESOLVER=true' >> ~/.docksal/docksal.env
+
+# Set upstream.
+sudo echo 'DOCKSAL_DNS_UPSTREAM=${DOCKSAL_DNS_UPSTREAM}' >> ~/.docksal/docksal.env
+
+# Reset proxy.
+fin reset proxy
 
 # pulling docksal containers to cach them localy
 # docker pull docksal/vhost-proxy:1.1
