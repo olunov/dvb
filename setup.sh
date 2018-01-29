@@ -37,32 +37,24 @@ sudo service smbd stop
 sudo service smbd start
 
 # Setup Docsal.
-curl -fsSL https://get.docksal.io | sh
-
-# Vagrant user to docker.
-#sudo usermod -a -G docker vagrant.
+su $USER_NAME -c 'curl -fsSL https://get.docksal.io | sh'
 
 # To apply that change and use Docksal.
-newgrp docker
+su $USER_NAME -c 'newgrp docker'
 
 # add proxy settings.
-sudo echo 'DOCKSAL_VHOST_PROXY_IP="0.0.0.0"' >> ~/.docksal/docksal.env
+echo 'DOCKSAL_VHOST_PROXY_IP="0.0.0.0"' >> /home/$USER_NAME/.docksal/docksal.env
 
 # Disable DNS resolver.
-sudo echo 'DOCKSAL_NO_DNS_RESOLVER=true' >> ~/.docksal/docksal.env
+echo 'DOCKSAL_NO_DNS_RESOLVER=true' >> /home/$USER_NAME/.docksal/docksal.env
 
 # Set upstream.
-sudo echo 'DOCKSAL_DNS_UPSTREAM=${DOCKSAL_DNS_UPSTREAM}' >> ~/.docksal/docksal.env
+echo 'DOCKSAL_DNS_UPSTREAM=${DOCKSAL_DNS_UPSTREAM}' >> /home/$USER_NAME/.docksal/docksal.env
 
 # Reset proxy.
-fin reset proxy
+su $USER_NAME -c 'fin reset proxy'
 
 # pulling docksal containers to cach them localy
-# docker pull docksal/vhost-proxy:1.1
-# docker pull docksal/dns:1.0
-# docker pull docksal/ssh-agent:1.0
-# docker pull docksal/ssh-agent:1.0
-# docker pull docksal/db:1.1-mysql-5.6
-# docker pull docksal/cli:1.3-php7
-# docker pull docksal/web:2.1-apache2.4
-# 
+docker pull docksal/db:1.1-mysql-5.6
+docker pull docksal/cli:1.3-php7
+docker pull docksal/web:2.1-apache2.4
