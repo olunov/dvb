@@ -1,7 +1,6 @@
 USER_NAME=vagrant
 USER_PASSWORD=vagrant
 WORKING_DIR=/www
-DOCKSAL_DNS_UPSTREAM=8.8.8.8
 
 # Run Linux updates
 sudo apt-get update -y
@@ -47,9 +46,6 @@ echo 'DOCKSAL_VHOST_PROXY_IP="0.0.0.0"' >> /home/$USER_NAME/.docksal/docksal.env
 
 # Disable DNS resolver.
 echo 'DOCKSAL_NO_DNS_RESOLVER=true' >> /home/$USER_NAME/.docksal/docksal.env
-
-# Set upstream.
-echo 'DOCKSAL_DNS_UPSTREAM=${DOCKSAL_DNS_UPSTREAM}' >> /home/$USER_NAME/.docksal/docksal.env
 
 # Reset proxy.
 su $USER_NAME -c 'fin reset proxy'
