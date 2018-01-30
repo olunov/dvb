@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/xenial64"
   
+  # Setting hostname.
   config.vm.hostname = "docksal-xenial64"
 
   # Disable automatic box update checking. If you disable this, then
@@ -56,6 +57,9 @@ Vagrant.configure("2") do |config|
     # vb.gui = true
     # Customize the amount of memory on the VM:
     vb.memory = "2048"
+
+    # Setting VB name.
+    vb.name = "docksal_virtual_box"
   end
 
   #
@@ -69,6 +73,6 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provision "shell", path: "setup.sh"
+  config.vm.provision "shell", path: "provision.sh"
 
 end
