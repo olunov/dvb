@@ -53,4 +53,5 @@ su $USER_NAME -c 'fin reset proxy'
 # pulling docksal containers to cach them localy
 docker pull docksal/db:1.1-mysql-5.6
 docker pull docksal/cli:1.3-php7
+docker pull docksal/cli:1.3-php5
 docker pull docksal/web:2.1-apache2.4
