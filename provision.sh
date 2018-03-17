@@ -6,7 +6,7 @@ WORKING_DIR=/www
 sudo apt-get update -y
 
 # Setting up unitils.
-sudo apt-get install curl mc zip tar -y
+sudo apt-get install curl mc zip tar htop hashalot -y
 
 # Creating working directory.
 sudo mkdir $WORKING_DIR
