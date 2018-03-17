@@ -13,10 +13,14 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/xenial64"
-  
-  # Resize disk
+
+  # Resize disk.
   config.disksize.size = '20GB'
-  
+
+  # Should be set to false in order do not regenerate ssh key on building box
+  # to be reused.
+  config.ssh.insert_key = false
+
   # Setting hostname.
   config.vm.hostname = "docksal-xenial64"
 
