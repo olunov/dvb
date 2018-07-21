@@ -29,3 +29,6 @@ vagrant ssh -- -vvv
 
 # To browse docksal docker containers
 https://hub.docker.com/r/docksal/
+
+# To generate sha256sum for file.
+sha256sum docksal_virtual_box-v0.2.box > sha256sum.txt
