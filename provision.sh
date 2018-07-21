@@ -51,7 +51,8 @@ echo 'DOCKSAL_NO_DNS_RESOLVER=true' >> /home/$USER_NAME/.docksal/docksal.env
 su $USER_NAME -c 'fin reset proxy'
 
 # pulling docksal containers to cach them localy
-docker pull docksal/db:1.1-mysql-5.6
-docker pull docksal/cli:1.3-php7
-docker pull docksal/cli:1.3-php5
+# to add more docksal docker container, browse 
+# https://hub.docker.com/r/docksal/
+docker pull docksal/db:1.2-mysql-5.6
+docker pull docksal/cli:2.2-php7.1
 docker pull docksal/web:2.1-apache2.4
