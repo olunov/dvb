@@ -6,7 +6,7 @@ WORKING_DIR=/www
 sudo apt-get update -y
 
 # Setting up unitils.
-sudo apt-get install curl mc zip tar htop hashalot -y
+sudo apt-get install curl mc zip tar htop hashalot nmap -y
 
 # Creating working directory.
 sudo mkdir $WORKING_DIR
@@ -48,7 +48,7 @@ echo 'DOCKSAL_VHOST_PROXY_IP="0.0.0.0"' >> /home/$USER_NAME/.docksal/docksal.env
 echo 'DOCKSAL_NO_DNS_RESOLVER=true' >> /home/$USER_NAME/.docksal/docksal.env
 
 # Reset proxy.
-su $USER_NAME -c 'fin reset proxy'
+su $USER_NAME -c 'fin system reset'
 
 # pulling docksal containers to cach them localy
 # to add more docksal docker container, browse 
