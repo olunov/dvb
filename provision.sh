@@ -56,3 +56,20 @@ su $USER_NAME -c 'fin system reset'
 docker pull docksal/db:1.2-mysql-5.6
 docker pull docksal/cli:2.2-php7.1
 docker pull docksal/web:2.1-apache2.4
+
+# Enable color prompt support.
+BASHRC=/home/$USER_NAME/.bashrc
+
+# Use sed to remove the comment from the force color line in the .bashrc file.
+sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' $BASHRC
+
+# Install bash git prompt.
+#git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt --depth=1
+su $USER_NAME -c "git clone https://github.com/magicmonty/bash-git-prompt.git /home/$USER_NAME/.bash-git-prompt --depth=1"
+
+echo 'GIT_PROMPT_THEME=Crunch' >> $BASHRC
+echo 'GIT_PROMPT_ONLY_IN_REPO=1' >> $BASHRC
+echo 'source ~/.bash-git-prompt/gitprompt.sh' >> $BASHRC
+
+# Reload the .bashrc file
+source $BASHRC
