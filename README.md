@@ -32,3 +32,6 @@ https://hub.docker.com/r/docksal/
 
 # To generate sha256sum for file.
 sha256sum docksal_virtual_box-v0.2.box > sha256sum.txt
+
+# To use Local network DNS server add this line to ~/.docksal/docksal.env.
+DOCKSAL_DNS_UPSTREAM=18.8.0.3
