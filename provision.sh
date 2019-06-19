@@ -50,13 +50,6 @@ echo 'DOCKSAL_NO_DNS_RESOLVER=true' >> /home/$USER_NAME/.docksal/docksal.env
 # Reset proxy.
 su $USER_NAME -c 'fin system reset'
 
-# pulling docksal containers to cach them localy
-# to add more docksal docker container, browse 
-# https://hub.docker.com/r/docksal/
-docker pull docksal/db:1.2-mysql-5.6
-docker pull docksal/cli:2.2-php7.1
-docker pull docksal/web:2.1-apache2.4
-
 # Enable color prompt support.
 BASHRC=/home/$USER_NAME/.bashrc
 
