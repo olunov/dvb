@@ -15,7 +15,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
 
   # Resize disk.
-  config.disksize.size = '20GB'
+  # Make sure plugin "vagrant-disksize" is installed.
+  # to install plugin run:
+  # > vagrant plugin install vagrant-disksize
+  config.disksize.size = '40GB'
 
   # Should be set to false in order do not regenerate ssh key on building box
   # to be reused.
@@ -63,7 +66,7 @@ Vagrant.configure("2") do |config|
     # Display the VirtualBox GUI when booting the machine
     # vb.gui = true
     # Customize the amount of memory on the VM:
-    vb.memory = "2048"
+    vb.memory = "4096"
 
     # Setting VB name.
     vb.name = "docksal_virtual_box"
