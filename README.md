@@ -83,7 +83,7 @@ After finishing open `http://demo.docksal` in your browser. Use credential **adm
 - `fin composer require 'drupal/schema_metatag:^1.3'`
 - `fin composer update`
 
-**Q**: What are default DB credentials.  
+**Q**: What are default DB credentials?  
 **A**: They are:
 - DB name: `default`
 - DB user: `user` 
@@ -114,7 +114,7 @@ and run `fin system reset dns`. If that didn't help probably netowrk policy rest
 **Q**: Will DVB work on Windows 7?  
 **A**: To be honest I have not checked that. But there should be no problems with that.
 
-For more details about configuring Docksal check [docs.docksal.io](https://docs.docksal.io/).
+For more details about configuring and using Docksal check [docs.docksal.io](https://docs.docksal.io/).
 
 # TODO:
 - Xdebug, port forwarding
