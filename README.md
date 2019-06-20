@@ -109,10 +109,12 @@ chmod 0600 /home/vagrant/.ssh/id_rsa
 ```
 DOCKSAL_DNS_UPSTREAM=8.8.8.8
 ```
-and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to get IP address of DNS server in your network.
+and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to get IP address of DNS server in your network. For more details see [docs](https://docs.docksal.io/core/system-dns/#override-the-default-upstream-dns-settings).
 
-**Q**: Will DVB work on Windows 7?
+**Q**: Will DVB work on Windows 7?  
 **A**: To be honest I have not checked that. But there should be no problems with that.
+
+For more details about configuring Docksal check [docs.docksal.io](https://docs.docksal.io/).
 
 # TODO:
 - Xdebug, port forwarding
