@@ -26,7 +26,7 @@ vagrant up
 ```
 Don't close console shell untill installation will be done. During installation it may ask permissions for creating virtual network addapters in thise case click 'Yes'.
 
-5. After finishing installation map network drive (see [details](https://support.microsoft.com/en-us/help/4026635/windows-map-a-network-drive)). Use directory `\\192.168.81.101\share`, user: `vagrant`, password: `vagrant`. You can use any letter for disk mapping, but usually I prefer to set it to "Z". After that sahred directory for keeping project on virtual machine will be available on disk Z as on regular disk of you computer.
+5. After finishing installation map network drive (see [details](https://support.microsoft.com/en-us/help/4026635/windows-map-a-network-drive)). Use directory `\\192.168.81.101\share`, user: `vagrant`, password: `vagrant`. You can use any letter for disk mapping, but usually I prefer to set it to "Z". After that shared directory for keeping project on virtual machine will be available on disk Z as on regular disk of your computer.
 
 ## Add new project
 1. Login to virtual machine. To do that open console shell and navigate to `C:\dvb` and run `vagrant ssh`.
