@@ -1,2 +1,9 @@
+# Vagrant folder.
 .vagrant/
+
+# Vagrant logs.
 ubuntu-xenial-16.04-cloudimg-console.log
+
+# Ignore any private keys, and leave .gitkeep
+ssh_keys/*
+!ssh_keys/.gitkeep
