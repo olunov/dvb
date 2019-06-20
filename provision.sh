@@ -37,7 +37,8 @@ EOF
 sudo service smbd stop
 sudo service smbd start
 
-# If id_rsa exists in ssh_keys move it to vagrant user .ssh directory.
+# If file id_rsa exists in ssh_keys directory move it to /home/vagrant/.ssh
+# directory.
 SSH_KEY=/vagrant/ssh_keys/id_rsa
 if [ -f ${SSH_KEY} ]; then
    mv ${SSH_KEY} /home/${USER_NAME}/.ssh
