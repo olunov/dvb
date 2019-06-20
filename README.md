@@ -1,5 +1,5 @@
 # Docksal Virtual Box (DVB)
-This project is about getting local development environment based on __Docksal__ (https://docksal.io) working on Windows 10 machines. Main difference of setting up Docksal on Windows 10 comparing to default way (see [deatils](https://docs.docksal.io/getting-started/setup/#install-windows)) is sources of project are stored on virtual machine and shared to host machine through Samba. 
+This project is about getting local development environment based on __Docksal__ (https://docksal.io) working on Windows 10 machines. Main difference of setting up Docksal on Windows 10 comparing to default way (see [deatils](https://docs.docksal.io/getting-started/setup/#install-windows)) is sources of project are stored on virtual machine and shared to host machine through Samba. That makes improvement in performance.
 
 # Installation
 ## Prerequisites
@@ -24,9 +24,9 @@ vagrant plugin install vagrant-disksize
 ```
 vagrant up
 ```
-Don't close console shell untill installetion will be done. During installetion it may ask permissions for creating virtual network addapters in thise case click 'Yes'.
+Don't close console shell untill installation will be done. During installation it may ask permissions for creating virtual network addapters in thise case click 'Yes'.
 
-5. After finishing installetion map network drive (see [details](https://support.microsoft.com/en-us/help/4026635/windows-map-a-network-drive)). Use directory `\\192.168.81.101\share`, user: `vagrant`, password: `vagrant`. You can use any letter for disk mapping, but usually I prefer to set it to "Z". After that sahred directory for keeping project on virtual machine will be available on disk Z as on regular disk of you computer.
+5. After finishing installation map network drive (see [details](https://support.microsoft.com/en-us/help/4026635/windows-map-a-network-drive)). Use directory `\\192.168.81.101\share`, user: `vagrant`, password: `vagrant`. You can use any letter for disk mapping, but usually I prefer to set it to "Z". After that sahred directory for keeping project on virtual machine will be available on disk Z as on regular disk of you computer.
 
 ## Add new project
 1. Login to virtual machine. To do that open console shell and navigate to `C:\dvb` and run `vagrant ssh`.
@@ -43,20 +43,22 @@ For more details about installing project with docksal see [Docksal Docs](https:
 
 ## Install Site
 Here will be installed Drupal 8 as example. Assuming previously here were done steps from "Add new project" section above.
-**IMPORTANT**: this way should be considered as example (or alternative) way of installing Drupal. See more details on [drupal.org](https://www.drupal.org/docs/develop/using-composer/using-composer-to-install-drupal-and-manage-dependencies#download-core).
 
 1. Login to virtual machine and go to `/www/demo` directory.
 2. Run command to download latest sources of Drupal8 with composer:
 ```
 fin composer create-project drupal-composer/drupal-project:8.x-dev drupal8 --stability dev --no-interaction
 ```
+
+**IMPORTANT**: this way should be considered as example (or alternative) way of installing Drupal. See more details on [drupal.org](https://www.drupal.org/docs/develop/using-composer/using-composer-to-install-drupal-and-manage-dependencies#download-core).
+
 3. Run command to move downloaded sources from `drupal8` directory to current directory (`/www/demo`):
 ```
 mv drupal8/* .
 ```
 4. Let's update settings for current docksal instance. Open for editng `/www/demo/.docksal/docksal.env` and update `DOCROOT=docroot` to `DOCROOT=web`. Alternatively file can be updated in mapped network disk. To do that go to `Z:\demo\.docksal` and find `docksal.env`.
-5. Let's restart project to apply docroot. Go in virtual machine to `/www/deno` and run `fin up`.
-6. Let's run installing Drupal site. To do that run command:
+5. Let's restart project to apply docroot. Go in virtual machine to `/www/demo` and run `fin up`. That will reload all projects containers.
+6. Let's install Drupal site. To do that run command:
 ```
 fin drush si --account-name=admin --account-pass=123 --site-name="Drupal 8 Site"
 ```
@@ -66,10 +68,10 @@ Use next credentials in order to setup DB connection:
 - Database password: `user`
 - Database host: `db`
 
-After finishing open `http://demo.docksal` in your browser. Use credential **admin/123** to login.
+After finishing open `http://demo.docksal` in your browser. Use credential **admin/123** to login to new site. 
 
 # FAQ
-- fin
+- fin - how it works
 - running composer
 - db credentials
 - How to copy/update id_rsa
