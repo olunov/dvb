@@ -1,5 +1,5 @@
 # Docksal Virtual Box (DVB)
-This project is about getting local development environment based on __Docksal__ (https://docksal.io) working on Windows 10 machines. Main difference of setting up Docksal on Windows 10 comparing to default way (see [deatils](https://docs.docksal.io/getting-started/setup/#install-windows)) is sources of project are stored on virtual machine and shared to host machine through Samba. That makes improvement in performance.
+This project is about getting local development environment based on **Docksal** (https://docksal.io) working on Windows 10 machines. Main difference of setting up Docksal on **Windows 10** comparing to default way (see [deatils](https://docs.docksal.io/getting-started/setup/#install-windows)) is sources of project are stored on virtual machine and shared to host machine through Samba. That makes improvement in performance.
 
 # Installation
 ## Prerequisites
@@ -19,7 +19,7 @@ git clone git@github.com:olunov/dvb.git .
 ```
 vagrant plugin install vagrant-disksize
 ```
-3. If you have private key to be used for accessing remote servers, repositories, etc. from dev environment copy it to `C:\dvb\ssh_keys` in root directory and rename it to __id_rsa__. During installation it will be moved to home directory of vagrant user.
+3. If you have private key to be used for accessing remote servers, repositories, etc. from dev environment copy it to `C:\dvb\ssh_keys` in root directory and rename it to **id_rsa**. During installation it will be moved to home directory of vagrant user.
 4. Open console shell, navigate to `C:\dvb` and run:
 ```
 vagrant up
@@ -56,8 +56,11 @@ fin composer create-project drupal-composer/drupal-project:8.x-dev drupal8 --sta
 ```
 mv drupal8/* .
 ```
-4. Let's update settings for current docksal instance. Open for editng `/www/demo/.docksal/docksal.env` and update `DOCROOT=docroot` to `DOCROOT=web`. Alternatively file can be updated in mapped network disk. To do that go to `Z:\demo\.docksal` and find `docksal.env`.
-5. Let's restart project to apply docroot. Go in virtual machine to `/www/demo` and run `fin up`. That will reload all projects containers.
+4. Let's update docroot directory for current docksal instance:
+```
+fin config set DOCROOT=web
+```
+5. Let's restart project to apply docroot. From project directory `/www/demo` run `fin up`. That will reload all projects containers.
 6. Let's install Drupal site. To do that run command:
 ```
 fin drush si --account-name=admin --account-pass=123 --site-name="Drupal 8 Site"
@@ -71,14 +74,48 @@ Use next credentials in order to setup DB connection:
 After finishing open `http://demo.docksal` in your browser. Use credential **admin/123** to login to new site. 
 
 # FAQ
-- fin - how it works
-- running composer
-- db credentials
-- How to copy/update id_rsa
-- Resize disk size, config.disksize.size = '20GB'
-- DOCKSAL_DNS_UPSTREAM=18.8.0.3
- To use Local network DNS server add this line to ~/.docksal/docksal.env.
-- Setting up on Windows 7
+**Q**: What is `fin`?  
+**A**: fin is set of shell commands in order to manager docksal environment and projects container. For more details see [docs](https://docs.docksal.io/fin/fin/).
+
+**Q**: How can I install composer to docksal?  
+**A**: Composer is already installed in `cli` container. Use fin to run composer, see examples below:
+- `fin composer -v`
+- `fin composer require 'drupal/schema_metatag:^1.3'`
+- `fin composer update`
+
+**Q**: What are default DB credentials.  
+**A**: They are:
+- DB name: `default`
+- DB user: `user` 
+- DB pass: `user`
+- DB host: `db`
+
+**IMPORTANT**: Please note **DB HOST** is `db`, not `localhost` and `127.0.0.1`.
+
+**Q**: I forgot to copy **id_rsa** to ssh_keys directory before running `vagrant up`, and now I'm missing my ssh private key.  
+**A**: To add your private key to DVB:  
+1. Copy your private key to `C:\dvd\ssh_keys` and rename to `id_rsa`:
+2. Login to virtual machine and run commands:
+```
+mv /vagrant/ssh_keys/id_rsa /home/vagrant/.ssh 
+chmod 0600 /home/vagrant/.ssh/id_rsa
+```
+
+**Q**: How can I increase disk size?  
+**A**: Navigate to `C:\dvd` and open for editing `Vagrantfile`, update `config.disksize.size` to `60GB`, save the file and run `vagrant reload`.
+
+**Q**: At some point my site doesn't see internet. For example I can't download any modeules by running composer. It says it is not able to resolve hostnames.  
+**A**: You can try to set `DOCKSAL_DNS_UPSTREAM` to IP address of Google's  (`8.8.8.8` or `8.8.4.4`) or CloudFlare's DNS (`1.1.1.1`). To do that open `/home/vagrant/.docksal/docksal.env` and set DOCKSAL_DNS_UPSTREAM to IP address like:
+```
+DOCKSAL_DNS_UPSTREAM=8.8.8.8
+```
+and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to get IP address of DNS server in your network.
+
+**Q**: Will DVB work on Windows 7?
+**A**: To be honest I have not checked that. But there should be no problems with that.
 
 # TODO:
 - Xdebug, port forwarding
+- phpstorm
+- code sniffer
+- unit test
