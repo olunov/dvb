@@ -15,11 +15,11 @@ Make sure you have installed next software:
 ```
 git clone git@github.com:olunov/dvb.git .
 ```
-2. Install vagrant plugin for resizing virtual machine disk. For that run in console:
+2. Install vagrant plugin for resizing virtual machine disk, run in console shell:
 ```
 vagrant plugin install vagrant-disksize
 ```
-3. If you have private key to be used for accessing remote servers, repositories, etc. from dev environment copy it to `C:\dvb\ssh_keys` in root directory and rename to __id_rsa__. During installation it will be moved to home directory of vagrant user.
+3. If you have private key to be used for accessing remote servers, repositories, etc. from dev environment copy it to `C:\dvb\ssh_keys` in root directory and rename it to __id_rsa__. During installation it will be moved to home directory of vagrant user.
 4. Open console shell, navigate to `C:\dvb` and run:
 ```
 vagrant up
@@ -27,3 +27,16 @@ vagrant up
 Don't close console shell untill installetion will be done. During installetion it may ask permissions for creating virtual network addapters in thise case click 'Yes'.
 
 5. After finishing installetion map network drive (see [details](https://support.microsoft.com/en-us/help/4026635/windows-map-a-network-drive)). Use directory `\\192.168.81.101\share`, user: `vagrant`, password: `vagrant`. You can use any letter for disk mapping, but usually I prefer to set it to "Z". After that sahred directory for keeping project on virtual machine will be available on disk Z as on regular disk of you computer.
+
+## Add new project (Drupal site).
+
+
+# FAQ
+- How to copy/update id_rsa
+- Resize disk size, config.disksize.size = '20GB'
+- DOCKSAL_DNS_UPSTREAM=18.8.0.3
+ To use Local network DNS server add this line to ~/.docksal/docksal.env.
+- Setting up on Windows 7
+
+# TODO:
+- Xdebug, port forwarding
