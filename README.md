@@ -6,7 +6,7 @@ This project is about getting local development environment based on **Docksal**
 Make sure you have installed next software:
  - **VirtualBox** (v.6.0.4), https://www.virtualbox.org/wiki/Downloads - **required**
  - **Vagrant** (v.2.2.0), https://www.vagrantup.com/downloads.html - **required**
- - **cmder** (v.1.3, minimal), http://cmder.net/ - optional (for accessing local virtual machine)
+ - **cmder** (v.1.3, minimal), http://cmder.net/ - **optional** (for accessing local virtual machine).
  
  I didn't check if DVB works with latest version of VirtualBox and Vagrant, but I assume there should be no problems with that.
 
@@ -75,7 +75,7 @@ After finishing open `http://demo.docksal` in your browser. Use credential **adm
 
 # FAQ
 **Q**: What is `fin`?  
-**A**: fin is set of shell commands in order to manager docksal environment and projects container. For more details see [docs](https://docs.docksal.io/fin/fin/).
+**A**: fin is set of shell commands in order to manage docksal environment and projects container. For more details see [docs](https://docs.docksal.io/fin/fin/).
 
 **Q**: How can I install composer to docksal?  
 **A**: Composer is already installed in `cli` container. Use fin to run composer, see examples below:
@@ -90,7 +90,7 @@ After finishing open `http://demo.docksal` in your browser. Use credential **adm
 - DB pass: `user`
 - DB host: `db`
 
-**IMPORTANT**: Please note **DB HOST** is `db`, not `localhost` and `127.0.0.1`.
+**IMPORTANT**: Please note **DB HOST** is `db`, not `localhost` or `127.0.0.1`.
 
 **Q**: I forgot to copy **id_rsa** to ssh_keys directory before running `vagrant up`, and now I'm missing my ssh private key.  
 **A**: To add your private key to DVB:  
@@ -101,18 +101,18 @@ mv /vagrant/ssh_keys/id_rsa /home/vagrant/.ssh
 chmod 0600 /home/vagrant/.ssh/id_rsa
 ```
 
-**Q**: How can I increase disk size?  
+**Q**: How can I increase disk size of virtual machine to 60GB?  
 **A**: Navigate to `C:\dvd` and open for editing `Vagrantfile`, update `config.disksize.size` to `60GB`, save the file and run `vagrant reload`.
 
-**Q**: At some point my site doesn't see internet. For example I can't download any modeules by running composer. It says it is not able to resolve hostnames.  
+**Q**: At some point my site doesn't see external hostes. For example I can't download any modeules by running composer. It says it is not able to resolve hostnames.  
 **A**: You can try to set `DOCKSAL_DNS_UPSTREAM` to IP address of Google's  (`8.8.8.8` or `8.8.4.4`) or CloudFlare's DNS (`1.1.1.1`). To do that open `/home/vagrant/.docksal/docksal.env` and set DOCKSAL_DNS_UPSTREAM to IP address like:
 ```
 DOCKSAL_DNS_UPSTREAM=8.8.8.8
 ```
-and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to get IP address of DNS server in your network. For more details see [docs](https://docs.docksal.io/core/system-dns/#override-the-default-upstream-dns-settings).
+and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to update `DOCKSAL_DNS_UPSTREAM` with IP address of DNS server in your network. For more details see [docs](https://docs.docksal.io/core/system-dns/#override-the-default-upstream-dns-settings).
 
 **Q**: Will DVB work on Windows 7?  
-**A**: To be honest I have not checked that. But there should be no problems with that.
+**A**: To be honest I have not checked that. But there should be no problems with that since all of that about setting up inside of ubuntu virtual box.
 
 For more details about configuring and using Docksal check [docs.docksal.io](https://docs.docksal.io/).
 
