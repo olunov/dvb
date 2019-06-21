@@ -109,7 +109,17 @@ chmod 0600 /home/vagrant/.ssh/id_rsa
 ```
 DOCKSAL_DNS_UPSTREAM=8.8.8.8
 ```
-and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to update `DOCKSAL_DNS_UPSTREAM` with IP address of DNS server in your network. For more details see [docs](https://docs.docksal.io/core/system-dns/#override-the-default-upstream-dns-settings).
+and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to update `DOCKSAL_DNS_UPSTREAM` with IP address of DNS server in your network. To get it open `cmd` and type `ipconfig /all` and find `Ethernet adapter Ethernet` (if your host machibe is connected over Ethernet) or `Wireless LAN adapter Wi-Fi` (if your host machine is connected over Wi-Fi), and you should get:
+```
+Ethernet adapter Ethernet:
+...
+   DNS Servers . . . . . . . . . . . : 22.10.0.5
+                                       22.10.0.6
+...
+```
+Use one of them to update `DOCKSAL_DNS_UPSTREAM`.  
+**NOTE:** From different network (if you work from home) that may require to update it.  
+For more details see [docs](https://docs.docksal.io/core/system-dns/#override-the-default-upstream-dns-settings).
 
 **Q**: Will DVB work on Windows 7?  
 **A**: To be honest I have not checked that. But there should be no problems with that since all of that about setting up inside of ubuntu virtual box.
