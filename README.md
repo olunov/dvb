@@ -1,5 +1,5 @@
 # Docksal Virtual Box (DVB)
-This project is about getting local development environment based on **Docksal** (https://docksal.io) working on Windows 10 machines. Main difference of setting up Docksal on **Windows 10** comparing to default way (see [deatils](https://docs.docksal.io/getting-started/setup/#install-windows)) is sources of project are stored on virtual machine and shared to host machine through Samba. That makes improvement in performance.
+This project is about getting local development environment based on **Docksal** (https://docksal.io) working on Windows 10 machines. Main difference of setting up Docksal on **Windows 10** comparing to default way (see [deatils](https://docs.docksal.io/getting-started/setup/#install-windows)) is sources of project are stored on virtual machine and shared to host machine through Samba. That makes improvement in performance and no dependency on WSL.
 
 # Installation
 ## Prerequisites
