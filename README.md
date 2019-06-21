@@ -104,12 +104,12 @@ chmod 0600 /home/vagrant/.ssh/id_rsa
 **Q**: How can I increase disk size of virtual machine to 60GB?  
 **A**: Navigate to `C:\dvd` and open for editing `Vagrantfile`, update `config.disksize.size` to `60GB`, save the file and run `vagrant reload`.
 
-**Q**: At some point my site doesn't see external hostes. For example I can't download any modeules by running composer. It says it is not able to resolve hostnames.  
+**Q**: At some point my site doesn't see external hostes. For example I can't download any modules by running composer. It says it is not able to resolve hostnames.  
 **A**: You can try to set `DOCKSAL_DNS_UPSTREAM` to IP address of Google's  (`8.8.8.8` or `8.8.4.4`) or CloudFlare's DNS (`1.1.1.1`). To do that open `/home/vagrant/.docksal/docksal.env` and set DOCKSAL_DNS_UPSTREAM to IP address like:
 ```
 DOCKSAL_DNS_UPSTREAM=8.8.8.8
 ```
-and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to update `DOCKSAL_DNS_UPSTREAM` with IP address of DNS server in your network. To get it open `cmd` and type `ipconfig /all` and find `Ethernet adapter Ethernet` (if your host machibe is connected over Ethernet) or `Wireless LAN adapter Wi-Fi` (if your host machine is connected over Wi-Fi), and you should get:
+and run `fin system reset dns`. If that didn't help probably netowrk policy restricts using public DNS server. Try to update `DOCKSAL_DNS_UPSTREAM` with IP address of DNS server in your network. To get it open `cmd` and type `ipconfig /all` and find `Ethernet adapter Ethernet` (if your host machine is connected over Ethernet) or `Wireless LAN adapter Wi-Fi` (if it is connected over Wi-Fi), and you should get:
 ```
 Ethernet adapter Ethernet:
 ...
@@ -118,7 +118,7 @@ Ethernet adapter Ethernet:
 ...
 ```
 Use one of them to update `DOCKSAL_DNS_UPSTREAM`.  
-**NOTE:** From different network (if you work from home) that may require to update it.  
+**NOTE:** From different network (for example if you work from home) that may require to update it.  
 For more details see [docs](https://docs.docksal.io/core/system-dns/#override-the-default-upstream-dns-settings).
 
 **Q**: Will DVB work on Windows 7?  
