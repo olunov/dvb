@@ -66,7 +66,9 @@ Vagrant.configure("2") do |config|
     # Display the VirtualBox GUI when booting the machine
     # vb.gui = true
     # Customize the amount of memory on the VM:
-    vb.memory = "4096"
+    vb.memory = "8192"
+
+    vb.cpus = 2
 
     # Setting VB name.
     vb.name = "docksal_virtual_box"
