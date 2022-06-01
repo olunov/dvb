@@ -124,6 +124,22 @@ For more details see [docs](https://docs.docksal.io/core/system-dns/#override-th
 **Q**: Will DVB work on Windows 7?  
 **A**: To be honest I have not checked that. But there should be no problems with that since all of that about setting up inside of ubuntu virtual box.
 
+**Q**: There are issues with accessing the site when host machine is connected to VPN.  
+**A**: Make next steps.
+1. Uncomment lines in Vagrantfile:
+```
+config.vm.network "forwarded_port", guest: 80, host: 8080
+config.vm.network "forwarded_port", guest: 443, host: 8443
+```
+2. Add host (for example `sample.com`) to you host file in your host machine:
+```
+127.0.0.1 sample.com
+```
+3. Access the site over URLs: http://sample.com:8080, https://sample.com:8443 
+
+Check https://github.com/docksal/docksal/issues/1124 for more details regarding issue of running Docksal on host machine in VPN.
+
+---
 For more details about configuring and using Docksal check [docs.docksal.io](https://docs.docksal.io/).
 
 # TODO:
