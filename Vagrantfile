@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/hirsute64"
+  config.vm.box = "ubuntu/jammy64"
 
   # Resize disk.
   # Make sure plugin "vagrant-disksize" is installed.
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
 
   # Setting hostname.
-  config.vm.hostname = "docksal-hirsute64"
+  config.vm.hostname = "docksal-jammy64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.81.101"
+  config.vm.network "private_network", ip: "192.168.81.202"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -71,7 +71,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "16384"
 
     # Setting VB name.
-    vb.name = "docksal_virtual_box"
+    vb.name = "dvb_jammy64"
   end
 
   #
