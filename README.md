@@ -152,9 +152,11 @@ services:
     - "XDEBUG_MODE=debug"
 ```
 save changes.
+
 3. Add `docksal-local.env` file in `.docksal` directory and add there:
 `XDEBUG_ENABLED="1"`
 save changes.
+
 4. Run command `fin up`.
 5. Enable XDebug extension in browser.
 6. Enjoy.
