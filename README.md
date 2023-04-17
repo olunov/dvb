@@ -139,11 +139,29 @@ config.vm.network "forwarded_port", guest: 443, host: 8443
 
 Check https://github.com/docksal/docksal/issues/1124 for more details regarding issue of running Docksal on host machine in VPN.
 
+**Q**: How to enable XDebug?
+**A**: Make next steps.
+1. It requires to use host machine's (Windows) IP address. To get it ssh to VM and type command `who`, it should print some thing like:
+`vagrant  pts/0        2023-04-17 07:20 (10.0.2.2)`
+2. Add `docksal-local.yml` file in `.docksal` directory and add there:
+```
+services:
+  cli:
+    environment:
+    - "XDEBUG_CONFIG=client_host=10.0.2.2 client_port=9003"
+    - "XDEBUG_MODE=debug"
+```
+save changes.
+3. Add `docksal-local.env` file in `.docksal` directory and add there:
+`XDEBUG_ENABLED="1"`
+save changes.
+4. Run command `fin up`.
+5. Enable XDebug extension in browser.
+6. Enjoy.
 ---
 For more details about configuring and using Docksal check [docs.docksal.io](https://docs.docksal.io/).
 
-# TODO:
-- Xdebug, port forwarding
+# TODO: 
 - phpstorm
 - code sniffer
 - unit test
